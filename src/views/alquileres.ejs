@@ -1,0 +1,97 @@
+<%- include("partials/_header.ejs") %>
+<h1>alquileres</h1>
+
+<pre><%= data[0].id_alquiler %></pre>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-7">
+      <table>
+        <thead>
+          <tr>
+            <th>Alquiler</th>
+            <th>Cliente</th>
+            <th>Camara</th>
+            <th>Fecha</th>
+          <tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for (var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].id_alquiler %></td>
+                <td><%= data[i].id_cliente %></td>
+                <td><%= data[i].id_camara %></td>
+                <td><%= data[i].fecha_alquiler %></td>
+                <td>
+                  <form action="/delete/<%= data[i].id_alquiler %>" method="post">
+                  <button type="submit" class="btn btn-primary">
+                    Delete
+                  </button>
+                  </form>
+                  <form action="/update/<%= data[i].id_alquiler %>" method="get">
+                  <button type="submit" class="btn btn-info">
+                    Update
+                  </button>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form action="/add" method="post">
+            <div class="form-group">
+              <input type="number" name="alquiler" placeholder="Alquiler" class="form-control">
+              <!--<select id='cliente_a' name='cliente_a'>
+                <option id='alquiler1' name='alquiler1' value="1111" >1
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >2
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >3
+                </option>
+              </select>-->
+            </div>
+            <div class="form-group">
+              <input type="number" name="cliente" placeholder="Cliente" class="form-control">
+              <!--<select id='cliente_a' name='cliente_a'>
+                <option id='alquiler1' name='alquiler1' value="1111" >1
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >2
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >3
+                </option>
+              </select>-->
+            </div>
+            <div class="form-group">
+              <input type="number" name="camara" placeholder="Camara" class="form-control">
+              <!--<select id='camara_a' name='camara_a'>
+                <option id='alquiler1' name='alquiler1' value="1111" >1b
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >2b
+                </option>
+                <option id='alquiler2' name='alquiler2' value="2222" >3b
+                </option>
+              </select>-->
+            </div>
+            <div class="form-group">
+              <input type="date" name="fecha" placeholder="Fecha" class="form-control">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">
+              Save Alquiler
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/_footer.ejs") %>
